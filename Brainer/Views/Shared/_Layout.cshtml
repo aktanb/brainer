@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+
+    @Styles.Render("~/bundles/Styles")
+    @Styles.Render("~/bundles/Playground")
+    @Styles.Render("~/bundles/ComponentStyles")
+
+    <link rel="stylesheet" href="Components/Reveal/css/reveal.min.css">
+    <link rel="stylesheet" href="Components/Reveal/css/theme/solarized.css" id="theme">
+
+</head>
+<body>
+
+    <div id="body">
+        @RenderBody()
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/Reveal")
+    @Scripts.Render("~/bundles/Foundation")
+    @Scripts.Render("~/bundles/Miscellaneous")
+    @Scripts.Render("~/bundles/Scripts")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

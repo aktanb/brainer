@@ -1,0 +1,20 @@
+﻿@using Brainer.Properties
+
+<div id="PlaygroundContainer"></div>
+
+<!-- Диалог выбора возраста пользователя. -->
+<div id="AskForAgeDialog" class='reveal-modal tiny' data-reveal>
+    @Resources.SelectYourAge:
+    <br /><br />
+    <div class='row'>
+        <div class='small-12 columns'>
+            <input type='number' class='playground-age-selector' value='6' />
+        </div>
+    </div>
+    <div class='button-bar right'>
+        <ul class='button-group'>
+            <li><button class='ok-button tiny'>OK</button></li>
+        </ul>
+    </div>
+    <a class='close-reveal-modal'>&#215;</a>
+</div>

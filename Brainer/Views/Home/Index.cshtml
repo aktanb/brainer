@@ -1,0 +1,58 @@
+﻿@model Brainer.Models.LoginModel
+
+@using Brainer
+
+@using Brainer.Properties
+
+@{
+    ViewBag.Title = "Brainer";
+}
+
+<div id="main-content">
+    <div class='contain-to-grid'>
+        <nav class="top-bar foundation-bar" data-topbar style='display: none'>
+            <ul class="title-area">
+                <li class="name">
+                    <h1><a href="#">BRAINER</a></h1>
+                </li>
+            </ul>
+
+            <section class="top-bar-section">
+                <ul class="right">
+                    <li class='@(ViewBag.CurrentCulture.Equals(Constants.Culture.ru_RU) ? "active" : "")'><a class='language-selector' culture='@Constants.Culture.ru_RU'>Рус</a></li>
+                    <li class='@(ViewBag.CurrentCulture.Equals(Constants.Culture.kk_KZ) ? "active" : "")'><a class='language-selector' culture='@Constants.Culture.kk_KZ'>Қаз</a></li>
+                </ul>
+
+                <ul class="left">
+                    <li><a href="#Play">@Resources.Play</a></li>
+                    <li><a href="#Scores">@Resources.Scores</a></li>
+                    <li><a href="#Read">@Resources.Read</a></li>
+                    <li><a href="#About">@Resources.About</a></li>
+                </ul>
+            </section>
+        </nav>
+    </div>
+
+    <div class="reveal">
+        <div class="slides">
+            <section></section>
+        </div>
+    </div>
+
+    <div class="main-dialog reveal-modal" data-reveal>
+        <div class='main-dialog-loading'>loading...</div>
+        <div class='main-dialog-content'></div>
+        <a class="close-reveal-modal">&#215;</a>
+    </div>
+</div>
+
+@Html.Partial("_Strings")
+
+@section scripts {
+    <script>
+        var _site;
+        $(function () {
+            _site = new Brainer.Site(false, true)
+        });
+    </script>
+}
