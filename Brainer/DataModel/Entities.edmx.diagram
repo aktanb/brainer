@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f74ce2660e8949f4b160da7461e92697" Name="Diagram1">
+        <EntityTypeShape EntityType="BrainerModel.Game" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="BrainerModel.GameSession" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="BrainerModel.FK_GameSession_Game" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="BrainerModel.GameSessionDetails" Width="1.5" PointX="5.625" PointY="1.25" />
+        <EntityTypeShape EntityType="BrainerModel.Level" Width="1.5" PointX="3.375" PointY="4.875" />
+        <EntityTypeShape EntityType="BrainerModel.UserDetails" Width="1.5" PointX="3" PointY="8.75" />
+        <EntityTypeShape EntityType="BrainerModel.UserProfile" Width="1.5" PointX="0.75" PointY="7.375" />
+        <EntityTypeShape EntityType="BrainerModel.webpages_Roles" Width="1.5" PointX="0.75" PointY="10.5" />
+        <AssociationConnector Association="BrainerModel.FK_Level_Game" />
+        <AssociationConnector Association="BrainerModel.FK_GameSessionDetails_GameSession" />
+        <AssociationConnector Association="BrainerModel.FK_Level_UserProfile" />
+        <AssociationConnector Association="BrainerModel.FK_UserDetails_UserProfile" />
+        <AssociationConnector Association="BrainerModel.FK_UserDetails_webpages_Roles" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

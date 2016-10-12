@@ -12,25 +12,23 @@ namespace Brainer.DataModel
     using System;
     using System.Collections.Generic;
     
-    public partial class Game
+    public partial class GameSession
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Game()
+        public GameSession()
         {
-            this.GameSession = new HashSet<GameSession>();
-            this.Level = new HashSet<Level>();
+            this.GameSessionDetails = new HashSet<GameSessionDetails>();
         }
     
         public System.Guid Id { get; set; }
-        public string Name { get; set; }
-        public string Title { get; set; }
-        public string Description { get; set; }
-        public bool IsAdditional { get; set; }
-        public bool IsFlash { get; set; }
+        public Nullable<System.Guid> UserId { get; set; }
+        public System.Guid GameId { get; set; }
+        public Nullable<System.Guid> LevelId { get; set; }
+        public Nullable<decimal> AverageThinkingTime { get; set; }
+        public Nullable<System.DateTime> Date { get; set; }
     
+        public virtual Game Game { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<GameSession> GameSession { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Level> Level { get; set; }
+        public virtual ICollection<GameSessionDetails> GameSessionDetails { get; set; }
     }
 }

@@ -1,0 +1,477 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BrainerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Game">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="Title" Type="nchar" MaxLength="100" />
+          <Property Name="Description" Type="text" />
+          <Property Name="IsAdditional" Type="bit" Nullable="false" />
+          <Property Name="IsFlash" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GameSession">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" />
+          <Property Name="GameId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="LevelId" Type="uniqueidentifier" />
+          <Property Name="AverageThinkingTime" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="GameSessionDetails">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="GameSessionId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="AnswerValue" Type="bit" />
+          <Property Name="AnswerTime" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="Level">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="GameId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Value" Type="int" Nullable="false" />
+          <Property Name="BonusesPlayed" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserDetails">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="FirstName" Type="nchar" MaxLength="20" />
+          <Property Name="LastName" Type="nchar" MaxLength="20" />
+          <Property Name="Gender" Type="bit" Nullable="false" />
+          <Property Name="DayOfBirth" Type="int" />
+          <Property Name="MonthOfBirth" Type="int" />
+          <Property Name="YearOfBirth" Type="int" />
+        </EntityType>
+        <EntityType Name="UserProfile">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="56" Nullable="false" />
+        </EntityType>
+        <EntityType Name="webpages_Roles">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_GameSession_Game">
+          <End Role="Game" Type="Self.Game" Multiplicity="1" />
+          <End Role="GameSession" Type="Self.GameSession" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Game">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GameSession">
+              <PropertyRef Name="GameId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GameSessionDetails_GameSession">
+          <End Role="GameSession" Type="Self.GameSession" Multiplicity="1" />
+          <End Role="GameSessionDetails" Type="Self.GameSessionDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GameSession">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GameSessionDetails">
+              <PropertyRef Name="GameSessionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Level_Game">
+          <End Role="Game" Type="Self.Game" Multiplicity="1" />
+          <End Role="Level" Type="Self.Level" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Game">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Level">
+              <PropertyRef Name="GameId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Level_UserProfile">
+          <End Role="UserProfile" Type="Self.UserProfile" Multiplicity="1" />
+          <End Role="Level" Type="Self.Level" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Level">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserDetails_UserProfile">
+          <End Role="UserProfile" Type="Self.UserProfile" Multiplicity="1" />
+          <End Role="UserDetails" Type="Self.UserDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserDetails">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserDetails_webpages_Roles">
+          <End Role="webpages_Roles" Type="Self.webpages_Roles" Multiplicity="1" />
+          <End Role="UserDetails" Type="Self.UserDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="webpages_Roles">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="UserDetails">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BrainerModelStoreContainer">
+          <EntitySet Name="Game" EntityType="Self.Game" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GameSession" EntityType="Self.GameSession" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GameSessionDetails" EntityType="Self.GameSessionDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Level" EntityType="Self.Level" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserDetails" EntityType="Self.UserDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserProfile" EntityType="Self.UserProfile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="webpages_Roles" EntityType="Self.webpages_Roles" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_GameSession_Game" Association="Self.FK_GameSession_Game">
+            <End Role="Game" EntitySet="Game" />
+            <End Role="GameSession" EntitySet="GameSession" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GameSessionDetails_GameSession" Association="Self.FK_GameSessionDetails_GameSession">
+            <End Role="GameSession" EntitySet="GameSession" />
+            <End Role="GameSessionDetails" EntitySet="GameSessionDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Level_Game" Association="Self.FK_Level_Game">
+            <End Role="Game" EntitySet="Game" />
+            <End Role="Level" EntitySet="Level" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Level_UserProfile" Association="Self.FK_Level_UserProfile">
+            <End Role="UserProfile" EntitySet="UserProfile" />
+            <End Role="Level" EntitySet="Level" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserDetails_UserProfile" Association="Self.FK_UserDetails_UserProfile">
+            <End Role="UserProfile" EntitySet="UserProfile" />
+            <End Role="UserDetails" EntitySet="UserDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserDetails_webpages_Roles" Association="Self.FK_UserDetails_webpages_Roles">
+            <End Role="webpages_Roles" EntitySet="webpages_Roles" />
+            <End Role="UserDetails" EntitySet="UserDetails" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BrainerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Game">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IsAdditional" Type="Boolean" Nullable="false" />
+          <Property Name="IsFlash" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="GameSession" Relationship="Self.FK_GameSession_Game" FromRole="Game" ToRole="GameSession" />
+          <NavigationProperty Name="Level" Relationship="BrainerModel.FK_Level_Game" FromRole="Game" ToRole="Level" />
+        </EntityType>
+        <EntityType Name="GameSession">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="UserId" Type="Guid" />
+          <Property Name="GameId" Type="Guid" Nullable="false" />
+          <Property Name="LevelId" Type="Guid" />
+          <Property Name="AverageThinkingTime" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Game" Relationship="Self.FK_GameSession_Game" FromRole="GameSession" ToRole="Game" />
+          <NavigationProperty Name="GameSessionDetails" Relationship="BrainerModel.FK_GameSessionDetails_GameSession" FromRole="GameSession" ToRole="GameSessionDetails" />
+        </EntityType>
+        <Association Name="FK_GameSession_Game">
+          <End Role="Game" Type="Self.Game" Multiplicity="1" />
+          <End Role="GameSession" Type="Self.GameSession" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Game">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GameSession">
+              <PropertyRef Name="GameId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BrainerEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Game" EntityType="Self.Game" />
+          <EntitySet Name="GameSession" EntityType="Self.GameSession" />
+          <AssociationSet Name="FK_GameSession_Game" Association="Self.FK_GameSession_Game">
+            <End Role="Game" EntitySet="Game" />
+            <End Role="GameSession" EntitySet="GameSession" />
+          </AssociationSet>
+          <EntitySet Name="GameSessionDetails" EntityType="BrainerModel.GameSessionDetails" />
+          <EntitySet Name="Level" EntityType="BrainerModel.Level" />
+          <EntitySet Name="UserDetails" EntityType="BrainerModel.UserDetails" />
+          <EntitySet Name="UserProfile" EntityType="BrainerModel.UserProfile" />
+          <EntitySet Name="webpages_Roles" EntityType="BrainerModel.webpages_Roles" />
+          <AssociationSet Name="FK_Level_Game" Association="BrainerModel.FK_Level_Game">
+            <End Role="Game" EntitySet="Game" />
+            <End Role="Level" EntitySet="Level" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GameSessionDetails_GameSession" Association="BrainerModel.FK_GameSessionDetails_GameSession">
+            <End Role="GameSession" EntitySet="GameSession" />
+            <End Role="GameSessionDetails" EntitySet="GameSessionDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Level_UserProfile" Association="BrainerModel.FK_Level_UserProfile">
+            <End Role="UserProfile" EntitySet="UserProfile" />
+            <End Role="Level" EntitySet="Level" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserDetails_UserProfile" Association="BrainerModel.FK_UserDetails_UserProfile">
+            <End Role="UserProfile" EntitySet="UserProfile" />
+            <End Role="UserDetails" EntitySet="UserDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserDetails_webpages_Roles" Association="BrainerModel.FK_UserDetails_webpages_Roles">
+            <End Role="webpages_Roles" EntitySet="webpages_Roles" />
+            <End Role="UserDetails" EntitySet="UserDetails" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="GameSessionDetails">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="GameSessionId" Type="Guid" Nullable="false" />
+          <Property Name="AnswerValue" Type="Boolean" />
+          <Property Name="AnswerTime" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="GameSession" Relationship="BrainerModel.FK_GameSessionDetails_GameSession" FromRole="GameSessionDetails" ToRole="GameSession" />
+        </EntityType>
+        <EntityType Name="Level">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="GameId" Type="Guid" Nullable="false" />
+          <Property Name="Value" Type="Int32" Nullable="false" />
+          <Property Name="BonusesPlayed" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Game" Relationship="BrainerModel.FK_Level_Game" FromRole="Level" ToRole="Game" />
+          <NavigationProperty Name="UserProfile" Relationship="BrainerModel.FK_Level_UserProfile" FromRole="Level" ToRole="UserProfile" />
+        </EntityType>
+        <EntityType Name="UserDetails">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="Gender" Type="Boolean" Nullable="false" />
+          <Property Name="DayOfBirth" Type="Int32" />
+          <Property Name="MonthOfBirth" Type="Int32" />
+          <Property Name="YearOfBirth" Type="Int32" />
+          <NavigationProperty Name="UserProfile" Relationship="BrainerModel.FK_UserDetails_UserProfile" FromRole="UserDetails" ToRole="UserProfile" />
+          <NavigationProperty Name="webpages_Roles" Relationship="BrainerModel.FK_UserDetails_webpages_Roles" FromRole="UserDetails" ToRole="webpages_Roles" />
+        </EntityType>
+        <EntityType Name="UserProfile">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="56" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Level" Relationship="BrainerModel.FK_Level_UserProfile" FromRole="UserProfile" ToRole="Level" />
+          <NavigationProperty Name="UserDetails" Relationship="BrainerModel.FK_UserDetails_UserProfile" FromRole="UserProfile" ToRole="UserDetails" />
+        </EntityType>
+        <EntityType Name="webpages_Roles">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="UserDetails" Relationship="BrainerModel.FK_UserDetails_webpages_Roles" FromRole="webpages_Roles" ToRole="UserDetails" />
+        </EntityType>
+        <Association Name="FK_Level_Game">
+          <End Type="BrainerModel.Game" Role="Game" Multiplicity="1" />
+          <End Type="BrainerModel.Level" Role="Level" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Game">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Level">
+              <PropertyRef Name="GameId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GameSessionDetails_GameSession">
+          <End Type="BrainerModel.GameSession" Role="GameSession" Multiplicity="1" />
+          <End Type="BrainerModel.GameSessionDetails" Role="GameSessionDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GameSession">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GameSessionDetails">
+              <PropertyRef Name="GameSessionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Level_UserProfile">
+          <End Type="BrainerModel.UserProfile" Role="UserProfile" Multiplicity="1" />
+          <End Type="BrainerModel.Level" Role="Level" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Level">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserDetails_UserProfile">
+          <End Type="BrainerModel.UserProfile" Role="UserProfile" Multiplicity="1" />
+          <End Type="BrainerModel.UserDetails" Role="UserDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserDetails">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserDetails_webpages_Roles">
+          <End Type="BrainerModel.webpages_Roles" Role="webpages_Roles" Multiplicity="1" />
+          <End Type="BrainerModel.UserDetails" Role="UserDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="webpages_Roles">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="UserDetails">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BrainerModelStoreContainer" CdmEntityContainer="BrainerEntities">
+          <EntitySetMapping Name="Game">
+            <EntityTypeMapping TypeName="BrainerModel.Game">
+              <MappingFragment StoreEntitySet="Game">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsAdditional" ColumnName="IsAdditional" />
+                <ScalarProperty Name="IsFlash" ColumnName="IsFlash" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GameSession">
+            <EntityTypeMapping TypeName="BrainerModel.GameSession">
+              <MappingFragment StoreEntitySet="GameSession">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="GameId" ColumnName="GameId" />
+                <ScalarProperty Name="LevelId" ColumnName="LevelId" />
+                <ScalarProperty Name="AverageThinkingTime" ColumnName="AverageThinkingTime" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GameSessionDetails">
+            <EntityTypeMapping TypeName="BrainerModel.GameSessionDetails">
+              <MappingFragment StoreEntitySet="GameSessionDetails">
+                <ScalarProperty Name="AnswerTime" ColumnName="AnswerTime" />
+                <ScalarProperty Name="AnswerValue" ColumnName="AnswerValue" />
+                <ScalarProperty Name="GameSessionId" ColumnName="GameSessionId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Level">
+            <EntityTypeMapping TypeName="BrainerModel.Level">
+              <MappingFragment StoreEntitySet="Level">
+                <ScalarProperty Name="BonusesPlayed" ColumnName="BonusesPlayed" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="GameId" ColumnName="GameId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserDetails">
+            <EntityTypeMapping TypeName="BrainerModel.UserDetails">
+              <MappingFragment StoreEntitySet="UserDetails">
+                <ScalarProperty Name="YearOfBirth" ColumnName="YearOfBirth" />
+                <ScalarProperty Name="MonthOfBirth" ColumnName="MonthOfBirth" />
+                <ScalarProperty Name="DayOfBirth" ColumnName="DayOfBirth" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserProfile">
+            <EntityTypeMapping TypeName="BrainerModel.UserProfile">
+              <MappingFragment StoreEntitySet="UserProfile">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="webpages_Roles">
+            <EntityTypeMapping TypeName="BrainerModel.webpages_Roles">
+              <MappingFragment StoreEntitySet="webpages_Roles">
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
