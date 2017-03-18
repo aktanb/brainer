@@ -19,8 +19,15 @@
 
             <section class="top-bar-section">
                 <ul class="right">
+
                     <li class='@(ViewBag.CurrentCulture.Equals(Constants.Culture.ru_RU) ? "active" : "")'><a class='language-selector' culture='@Constants.Culture.ru_RU'>Рус</a></li>
                     <li class='@(ViewBag.CurrentCulture.Equals(Constants.Culture.kk_KZ) ? "active" : "")'><a class='language-selector' culture='@Constants.Culture.kk_KZ'>Қаз</a></li>
+                    <li class='has-dropdown'>
+                        <a>User login</a>
+                        <ul class='dropdown'>
+                            <li><a href=''>@Resources.SignOut</a></li>
+                        </ul>
+                    </li>
                 </ul>
 
                 <ul class="left">
@@ -40,7 +47,7 @@
     </div>
 
     <div class="main-dialog reveal-modal" data-reveal>
-        <div class='main-dialog-loading'>loading...</div>
+        <div class='main-dialog-loading'>@Resources.Loading...</div>
         <div class='main-dialog-content'></div>
         <a class="close-reveal-modal">&#215;</a>
     </div>

@@ -14,7 +14,9 @@ var Marginal;
             this.onHashChange = function () { };
             this.defaultBackgroundColor = '#9D1309';
             var _this = this;
-            Reveal.initialize(options);
+            setTimeout(function () {
+                Reveal.initialize(options);
+            }, 100);
             _this.container = $('.reveal');
             _this.slides = _this.container.find('.slides');
             _this.slide = _this.container.find('.slide');
