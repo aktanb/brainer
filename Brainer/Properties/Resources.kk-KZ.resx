@@ -1,6 +1,6 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <!-- 
+	<!-- 
     Microsoft ResX Schema 
     
     Version 2.0
@@ -59,80 +59,275 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
-    <xsd:element name="root" msdata:IsDataSet="true">
-      <xsd:complexType>
-        <xsd:choice maxOccurs="unbounded">
-          <xsd:element name="metadata">
-            <xsd:complexType>
-              <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
-              </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
-            </xsd:complexType>
-          </xsd:element>
-          <xsd:element name="assembly">
-            <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
-            </xsd:complexType>
-          </xsd:element>
-          <xsd:element name="data">
-            <xsd:complexType>
-              <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
-              </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
-            </xsd:complexType>
-          </xsd:element>
-          <xsd:element name="resheader">
-            <xsd:complexType>
-              <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-              </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
-            </xsd:complexType>
-          </xsd:element>
-        </xsd:choice>
-      </xsd:complexType>
-    </xsd:element>
-  </xsd:schema>
-  <resheader name="resmimetype">
-    <value>text/microsoft-resx</value>
-  </resheader>
-  <resheader name="version">
-    <value>2.0</value>
-  </resheader>
-  <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </resheader>
-  <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </resheader>
-  <data name="About" xml:space="preserve">
+	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+		<xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+		<xsd:element name="root" msdata:IsDataSet="true">
+			<xsd:complexType>
+				<xsd:choice maxOccurs="unbounded">
+					<xsd:element name="metadata">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" />
+							</xsd:sequence>
+							<xsd:attribute name="name" use="required" type="xsd:string" />
+							<xsd:attribute name="type" type="xsd:string" />
+							<xsd:attribute name="mimetype" type="xsd:string" />
+							<xsd:attribute ref="xml:space" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="assembly">
+						<xsd:complexType>
+							<xsd:attribute name="alias" type="xsd:string" />
+							<xsd:attribute name="name" type="xsd:string" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="data">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+							<xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+							<xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+							<xsd:attribute ref="xml:space" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="resheader">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required" />
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:choice>
+			</xsd:complexType>
+		</xsd:element>
+	</xsd:schema>
+	<resheader name="resmimetype">
+		<value>text/microsoft-resx</value>
+	</resheader>
+	<resheader name="version">
+		<value>2.0</value>
+	</resheader>
+	<resheader name="reader">
+		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<resheader name="writer">
+		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<data name="About" xml:space="preserve">
     <value>Сайт жайлы</value>
   </data>
-  <data name="Loading" xml:space="preserve">
+	<data name="Loading" xml:space="preserve">
     <value>Жүктелу</value>
   </data>
-  <data name="Play" xml:space="preserve">
+	<data name="Play" xml:space="preserve">
     <value>Ойнау</value>
   </data>
-  <data name="Read" xml:space="preserve">
+	<data name="Read" xml:space="preserve">
     <value>Оқу</value>
   </data>
-  <data name="Scores" xml:space="preserve">
+	<data name="Scores" xml:space="preserve">
     <value>Менің нәтижелерім</value>
   </data>
-  <data name="SelectYourAge" xml:space="preserve">
+	<data name="SelectYourAge" xml:space="preserve">
     <value>Пожалуйста, укажите свой возраст</value>
   </data>
+	<data name="Registration" xml:space="preserve">
+		<value>Тіркелу</value>
+	</data>
+	<data name="SignOutConfirmationMessage" xml:space="preserve">
+		<value>Шығатыныңызды растайсыз ба?</value>
+	</data>
+	<data name="Yes" xml:space="preserve">
+		<value>Иә</value>
+	</data>
+	<data name="No" xml:space="preserve">
+		<value>Жоқ</value>
+	</data>
+	<data name="StartPlaying" xml:space="preserve">
+		<value>Ойынды бастау</value>
+	</data>
+	<data name="Password" xml:space="preserve">
+		<value>Құпия сөз</value>
+	</data>
+	<data name="Email" xml:space="preserve">
+		<value>Электрондық пошта мекенжайыңыз</value>
+	</data>
+	<data name="ConfirmPassword" xml:space="preserve">
+		<value>Құпия сөзіңізді растаңыз</value>
+	</data>
+	<data name="DateOfBirth" xml:space="preserve">
+		<value>Туылған күні</value>
+	</data>
+	<data name="PleaseRegisterOrSignIn" xml:space="preserve">
+		<value>Тіркелуіңізді &lt;br&gt; немесе кіруіңізді өтінемін</value>
+	</data>
+	<data name="ThisFieldIsMandatory" xml:space="preserve">
+		<value>Бұл міндетті жолдар.</value>
+	</data>
+	<data name="InvalidEmailFormat" xml:space="preserve">
+		<value>Электрондық пошта мекенжайыңыз қате форматта.</value>
+	</data>
+	<data name="PasswordMustBeLongerThanSixSymbols" xml:space="preserve">
+		<value>Құпия сөз кемінде 6 таңбаны қамтуы керек.</value>
+	</data>
+	<data name="PasswordMustNotBeLongerThanTwentySymbols" xml:space="preserve">
+		<value>Құпия сөздің ең үлкен ұзындығы 20 таңбаны қамтуы керек.</value>
+	</data>
+	<data name="ThisFieldValueMustMatchThePasswordFieldValue" xml:space="preserve">
+		<value>Бұл жолдағы таңбалар «құпия сөз» жолымен сәйкес келуі керек.</value>
+	</data>
+	<data name="EnterYourEmail" xml:space="preserve">
+		<value>«Email» жолына тіркелгіде көрсетілген электрондық поштаңыздын мекен-жайын толтырыңыз.</value>
+	</data>
+	<data name="PasswordFieldValueIsMissing" xml:space="preserve">
+		<value>«Құпия сөз» жолы толтырылмады.</value>
+	</data>
+	<data name="AccountWithSuchEmailIsMissing" xml:space="preserve">
+		<value>Енгізілген электрондық пошта жекен-жайы бойынша тіркелгі жоқ. Өтінемін, оның (э.п. мекен-жайы) дұрыстығын тексеріңіз.</value>
+	</data>
+	<data name="InvalidPassword" xml:space="preserve">
+		<value>Енгізілген құпия сөз лайық емес.</value>
+	</data>
+	<data name="PersonalInformation" xml:space="preserve">
+		<value>Өзі туралы мәліметтер</value>
+	</data>
+	<data name="PersonalData" xml:space="preserve">
+		<value>Көрсеткіштер</value>
+	</data>
+	<data name="Set" xml:space="preserve">
+		<value>Толтыру</value>
+	</data>
+	<data name="ChangeValue" xml:space="preserve">
+		<value>Мәнін өзгерту</value>
+	</data>
+	<data name="Upload" xml:space="preserve">
+		<value>Жүктеу</value>
+	</data>
+	<data name="SelectImage" xml:space="preserve">
+		<value>Суретті таңдау</value>
+	</data>
+	<data name="FirstName" xml:space="preserve">
+		<value>Аты</value>
+	</data>
+	<data name="SecondName" xml:space="preserve">
+		<value>Тегi</value>
+	</data>
+	<data name="Age" xml:space="preserve">
+		<value>Жасы</value>
+	</data>
+	<data name="Gender" xml:space="preserve">
+		<value>Жынысы</value>
+	</data>
+	<data name="Male" xml:space="preserve">
+		<value>Ер</value>
+	</data>
+	<data name="Female" xml:space="preserve">
+		<value>Әйел</value>
+	</data>
+	<data name="Save" xml:space="preserve">
+		<value>Сақтау</value>
+	</data>
+	<data name="Cancel" xml:space="preserve">
+		<value>Шығу</value>
+	</data>
+	<data name="AllGames" xml:space="preserve">
+		<value>Барлық ойындар</value>
+	</data>
+	<data name="Round" xml:space="preserve">
+		<value>Кезең</value>
+	</data>
+	<data name="Level" xml:space="preserve">
+		<value>Дәреже</value>
+	</data>
+	<data name="AverageAnswerTime" xml:space="preserve">
+		<value>Орташа жауап беру уақыты</value>
+	</data>
+	<data name="Date" xml:space="preserve">
+		<value>Күн</value>
+	</data>
+	<data name="BillingInformation" xml:space="preserve">
+		<value>Информация о счёте</value>
+	</data>
+	<data name="VisualAndSpaceGameType" xml:space="preserve">
+		<value>Кеңістіктегі зейін</value>
+	</data>
+	<data name="MathGameType" xml:space="preserve">
+		<value>Математикалық</value>
+	</data>
+	<data name="VerbalGameType" xml:space="preserve">
+		<value>Ауызша</value>
+	</data>
+	<data name="MemoryGameType" xml:space="preserve">
+		<value>Жадыға арналған</value>
+	</data>
+	<data name="MemoryGameDescription" xml:space="preserve">
+		<value>Бұл ойында сізге есте сақтау қабілетін (жадыны) жаттықтыруға бағытталған ойындар ұсынылады.</value>
+	</data>
+	<data name="MainGame" xml:space="preserve">
+		<value>Негізгі ойын</value>
+	</data>
+	<data name="MainGameDescription" xml:space="preserve">
+		<value>Бұл ойында сізге мидың бірден бірнеше қабілетін жаттықтыратын тапсырмалар шешімін  табуға ұсынылады, соның ішінде: кеңістіктегі зейін, математикалық және ауызша.</value>
+	</data>
+	<data name="BirdsGameLabel" xml:space="preserve">
+		<value>Құстар</value>
+	</data>
+	<data name="BirdsGameDescription" xml:space="preserve">
+		<value>Бұл ойында сізге құстың қайда пайда болғанын  және бір мезетте қандай сан көрсетілгенін есте сақтап алу қажет.</value>
+	</data>
+	<data name="AllArticles" xml:space="preserve">
+		<value>Барлық мақалалар</value>
+	</data>
+	<data name="ArticlesNotReady" xml:space="preserve">
+		<value>Мақала әлі дайын емес.</value>
+	</data>
+	<data name="Delete" xml:space="preserve">
+		<value>Жою</value>
+	</data>
+	<data name="Edit" xml:space="preserve">
+		<value>Өзгерту</value>
+	</data>
+	<data name="DeletionConfirmationMessage" xml:space="preserve">
+		<value>Жоятыныңызды растаңыз?</value>
+	</data>
+	<data name="Correct" xml:space="preserve">
+		<value>Дұрыс</value>
+	</data>
+	<data name="Finish" xml:space="preserve">
+		<value>Аяқтау</value>
+	</data>
+	<data name="DontKnow" xml:space="preserve">
+		<value>Білмеймін</value>
+	</data>
+	<data name="Continue" xml:space="preserve">
+		<value>Жалғастыру</value>
+	</data>
+	<data name="CurrentResults" xml:space="preserve">
+		<value>Сіздің ағымды нәтижеңіз</value>
+	</data>
+	<data name="AddArticle" xml:space="preserve">
+		<value>Мақала қосу</value>
+	</data>
+	<data name="SetDateOfBirth" xml:space="preserve">
+		<value>Туылған жылды көрсету</value>
+	</data>
+	<data name="PageUnderConstruction" xml:space="preserve">
+		<value>Кешіріңіз, бұл бет өңделуде.</value>
+	</data>
+	<data name="GameUnderConstruction" xml:space="preserve">
+		<value>Кешіріңіз, бұл ойын өңделуде.</value>
+	</data>
+	<data name="SignIn" xml:space="preserve">
+		<value>Кіру</value>
+	</data>
+	<data name="SignOut" xml:space="preserve">
+		<value>Шығу</value>
+	</data>
+	<data name="Back" xml:space="preserve">
+		<value>Қайту</value>
+	</data>
 </root>
