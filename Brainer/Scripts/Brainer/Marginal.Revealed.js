@@ -14,9 +14,6 @@ var Marginal;
             this.onHashChange = function () { };
             this.defaultBackgroundColor = '#9D1309';
             var _this = this;
-            setTimeout(function () {
-                Reveal.initialize(options);
-            }, 100);
             _this.container = $('.reveal');
             _this.slides = _this.container.find('.slides');
             _this.slide = _this.container.find('.slide');
@@ -95,7 +92,7 @@ var Marginal;
                 $('<div />', {
                     'class': 'spinner-caption',
                     'style': 'display: none',
-                    'html': Marginal.Strings.loading
+                    'html': _resources.loading
                 }).insertAfter($('.spinner')).fadeIn('fast');
             }
         };

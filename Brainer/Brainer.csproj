@@ -22,6 +22,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <TypeScriptToolsVersion>1.7</TypeScriptToolsVersion>
+    <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -1680,7 +1681,6 @@
     <Content Include="Views\Page\Scores.cshtml" />
     <Content Include="Views\Page\Read.cshtml" />
     <Content Include="Views\Page\About.cshtml" />
-    <Content Include="Views\Home\_Strings.cshtml" />
     <Content Include="Views\Playground\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -1719,7 +1719,6 @@
     <TypeScriptCompile Include="Scripts\Brainer\Marginal.Sound.ts" />
     <TypeScriptCompile Include="Scripts\Brainer\Marginal.Spinner.ts" />
     <TypeScriptCompile Include="Scripts\Brainer\Marginal.Utilities.ts" />
-    <TypeScriptCompile Include="Scripts\Brainer\Marginal.Strings.ts" />
     <TypeScriptCompile Include="Scripts\Brainer\Views\Play.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\uuid\UUID.d.ts" />

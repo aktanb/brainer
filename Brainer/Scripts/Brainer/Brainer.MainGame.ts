@@ -79,7 +79,7 @@ module Brainer {
                         }
                     });
                 } else { // Если ответ правильный:
-                    value.html(Marginal.Strings.answeredRight + '!').transition({ 'opacity': 1 }).flexVerticalCenter();
+                    value.html(_resources.answeredRight + '!').transition({ 'opacity': 1 }).flexVerticalCenter();
                     _site.playground.playScene.transition({ 'opacity': 0 }).addClass('unclickable');
                     _site.playground.footer.css('opacity', 0);
                     _site.sounds.right.play();

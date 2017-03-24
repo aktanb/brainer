@@ -42,11 +42,11 @@ namespace Brainer
             (
                 new ScriptBundle("~/bundles/Scripts").Include
                 (
+                    "~/Scripts/Brainer/Marginal.Strings.js",
                     "~/Scripts/Brainer/Marginal.Utilities.js",
                     "~/Scripts/Brainer/Marginal.Revealed.js",
                     "~/Scripts/Brainer/Marginal.Spinner.js",
                     "~/Scripts/Brainer/Marginal.Sound.js",
-                    "~/Scripts/Brainer/Marginal.Strings.js",
                     "~/Scripts/Brainer/Brainer.Site.js",
                     "~/Scripts/Brainer/Brainer.Session.js",
                     "~/Scripts/Brainer/Brainer.Sounds.js",

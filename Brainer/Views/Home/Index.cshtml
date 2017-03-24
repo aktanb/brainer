@@ -53,13 +53,19 @@
     </div>
 </div>
 
-@Html.Partial("_Strings")
-
 @section scripts {
     <script>
         var _site;
         $(function () {
             _site = new Brainer.Site(false, true)
         });
+
+        var _resources = {
+            loading: '@Resources.Loading',
+            answeredRight: '',
+            stopPlaying: '',
+            iDontKnow: '',
+            continue: ''
+        }
     </script>
 }

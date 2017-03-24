@@ -33,7 +33,7 @@ var Brainer;
             if (settings.state.length > 0) {
                 $('<button />', {
                     'class': 'left',
-                    'html': Marginal.Strings.stopPlaying
+                    'html': _resources.stopPlaying
                 })
                     .appendTo(left)
                     .click(function () {
@@ -43,7 +43,7 @@ var Brainer;
                 if (settings.state === 'playing') {
                     $('<button />', {
                         'class': 'confused-button right',
-                        'html': Marginal.Strings.iDontKnow
+                        'html': _resources.iDontKnow
                     })
                         .appendTo(right).click(function () {
                         // $('.playground').playground('nextFrame', false, true);
@@ -52,7 +52,7 @@ var Brainer;
                 else if (settings.state === 'showing results') {
                     $('<button />', {
                         'class': 'right',
-                        'html': Marginal.Strings.continue
+                        'html': _resources.continue
                     })
                         .appendTo(right)
                         .click(function () {

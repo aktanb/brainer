@@ -48,3 +48,4 @@
 }
 
 declare var _site: Brainer.Site;
+declare var _resources: any;
