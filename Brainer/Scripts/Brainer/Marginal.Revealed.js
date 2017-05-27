@@ -6,13 +6,17 @@ var Marginal;
                 controls: false,
                 progress: false,
                 keyboard: false,
-                touch: false
+                touch: false,
+                margin: 0.1,
+                minScale: 0.2,
+                maxScale: 3
             }; }
             this.options = options;
             this.reveal = Reveal;
             this.onPageReset = function () { };
             this.onHashChange = function () { };
             this.defaultBackgroundColor = '#9D1309';
+            this._slideLoadTimeout = 300;
             var _this = this;
             _this.container = $('.reveal');
             _this.slides = _this.container.find('.slides');
@@ -30,6 +34,9 @@ var Marginal;
                     _this.resetPage();
                 });
             };
+            _this.reveal.addEventListener('ready', function (event) {
+                //alert('TEST');
+            });
         }
         // Loads the new page's content into a new slide.
         Revealed.prototype.resetPage = function (initial) {
@@ -43,7 +50,7 @@ var Marginal;
                 setTimeout(function () {
                     _this.slides.find('.past').remove();
                     _this.backgrounds.find('.past').remove();
-                }, 300);
+                }, _this._slideLoadTimeout + 100);
             });
         };
         // Adds a new slide to the right.
@@ -53,7 +60,7 @@ var Marginal;
             setTimeout(function () {
                 _this.reveal.right();
                 onAdded();
-            }, 100);
+            }, _this._slideLoadTimeout);
             var result = new Section(_this, data);
             result.object.appendTo(_this.slides);
             return result;

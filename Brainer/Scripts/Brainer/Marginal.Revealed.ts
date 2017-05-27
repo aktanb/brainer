@@ -10,14 +10,17 @@
         public onPageReset: any = function () { }
         public onHashChange: any = function () { }
         public defaultBackgroundColor: string = '#9D1309';
-
+        
         constructor(
             public options =
                 {
                     controls: false,
                     progress: false,
                     keyboard: false,
-                    touch: false
+                    touch: false,
+                    margin: 0.1,
+                    minScale: 0.2,
+                    maxScale: 3
                 }
         ) {
             var _this = this;
@@ -26,6 +29,7 @@
             _this.slide = _this.container.find('.slide');
             _this.backgrounds = _this.container.find('.backgrounds');
             _this.resetPage(true);
+
             window.onhashchange = function () {
                 _this.currentPageName = '';
                 _this.currentSlide = _this.addSlide(
@@ -40,6 +44,10 @@
                     }
                 );
             }
+
+            _this.reveal.addEventListener('ready', function (event) {
+                //alert('TEST');
+            });
         }
 
         // Loads the new page's content into a new slide.
@@ -53,7 +61,7 @@
                 setTimeout(function () {
                     _this.slides.find('.past').remove();
                     _this.backgrounds.find('.past').remove();
-                }, 300);
+                }, _this._slideLoadTimeout + 100);
             });
         }
 
@@ -63,7 +71,7 @@
             setTimeout(function () {
                 _this.reveal.right();
                 onAdded();
-            }, 100);
+            }, _this._slideLoadTimeout);
             var result = new Section(_this, data);
             result.object.appendTo(_this.slides);
             return result;
@@ -111,6 +119,8 @@
                 }).insertAfter($('.spinner')).fadeIn('fast');
             }
         }
+
+        private _slideLoadTimeout: number = 300;
     }
 
     export class Section {
