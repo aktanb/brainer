@@ -1,13 +1,16 @@
-﻿using System;
+﻿using Brainer.Filters;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Threading;
 using System.Web;
 using System.Web.Mvc;
+using WebMatrix.WebData;
 
 namespace Brainer.Controllers
 {
+    [InitializeSimpleMembership]
     public class HomeController : Controller
     {
         public String CurrentCulture
@@ -32,6 +35,12 @@ namespace Brainer.Controllers
             ViewBag.ReturnUrl = returnUrl;
 
             ViewBag.CurrentCulture = CurrentCulture;
+
+            ViewBag.IsLogged = false;
+
+            // WebSecurity.CreateUserAndAccount("admin1", "p@ssw0rd");
+
+            // ViewBag.LoginResult = WebSecurity.Login("admin1", "p@ssw0rd", true);
 
             return View();
         }

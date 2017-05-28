@@ -1,0 +1,31 @@
+﻿<style>
+    #SignInUnit {
+        display: inline-block;
+        min-width: 100px;
+        zoom: 2;
+        -ms-zoom: 2;
+        -webkit-zoom: 2;
+        -moz-transform: scale(2, 2);
+        -moz-transform-origin: left center;
+    }
+
+    .sign-in-unit-error {
+        position: absolute !important;
+    }
+
+    .large-textbox {
+        height: 30px !important;
+    }
+</style>
+
+<div id='SignInUnit'>
+    <h2></h2>
+    <form action="sign_in.php" method="POST">
+        <input id="source" name="source" type="hidden">
+        <input name="email" class="span3 large-textbox" type="text" placeholder="Email">
+        <input name="password" class="span2 large-textbox" type="password" placeholder="Password">
+        <button type="submit" class="btn">
+            Sign in
+        </button>
+    </form>
+</div>

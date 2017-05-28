@@ -6,6 +6,8 @@
 
 @{
     ViewBag.Title = "Brainer";
+    
+    var logged = ViewBag.IsLogged as Boolean?;
 }
 
 <div id="main-content">
@@ -22,12 +24,20 @@
 
                     <li class='@(ViewBag.CurrentCulture.Equals(Constants.Culture.ru_RU) ? "active" : "")'><a class='language-selector' culture='@Constants.Culture.ru_RU'>Рус</a></li>
                     <li class='@(ViewBag.CurrentCulture.Equals(Constants.Culture.kk_KZ) ? "active" : "")'><a class='language-selector' culture='@Constants.Culture.kk_KZ'>Қаз</a></li>
-                    <li class='has-dropdown'>
-                        <a>User login</a>
-                        <ul class='dropdown'>
-                            <li><a href=''>@Resources.SignOut</a></li>
-                        </ul>
-                    </li>
+
+                    @if (!logged.Value)
+                    { 
+                        <li><a href='#Scores'>@Resources.SignIn</a></li>                    
+                    }
+                    else
+                    { 
+                        <li class='has-dropdown'>
+                            <a>User login</a>
+                            <ul class='dropdown'>
+                                <li><a href=''>@Resources.SignOut</a></li>
+                            </ul>
+                        </li>
+                    }
                 </ul>
 
                 <ul class="left">
@@ -55,13 +65,13 @@
 
 @section scripts {
     <script>
-        var _site;
-        $(function () {
-            _site = new Brainer.Site(false, true)
-        });
+    var _site;
+    $(function () {
+        _site = new Brainer.Site(false, true)
+    });
 
-        var _resources = {
-            loading: '@Resources.Loading',
+    var _resources = {
+        loading: '@Resources.Loading',
             answeredRight: '',
             stopPlaying: '',
             iDontKnow: '',

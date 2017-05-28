@@ -7,8 +7,11 @@ var Marginal;
                 progress: false,
                 keyboard: false,
                 touch: false,
-                margin: 0.1,
-                minScale: 0.2,
+                //transition: 'convex',
+                //width: '100%',
+                //height: '100%',
+                margin: 0.0,
+                minScale: 0.5,
                 maxScale: 3
             }; }
             this.options = options;
@@ -35,7 +38,6 @@ var Marginal;
                 });
             };
             _this.reveal.addEventListener('ready', function (event) {
-                //alert('TEST');
             });
         }
         // Loads the new page's content into a new slide.
