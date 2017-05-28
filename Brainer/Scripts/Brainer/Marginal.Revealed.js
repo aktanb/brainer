@@ -7,10 +7,7 @@ var Marginal;
                 progress: false,
                 keyboard: false,
                 touch: false,
-                //transition: 'convex',
-                //width: '100%',
-                //height: '100%',
-                margin: 0.0,
+                margin: 0.1,
                 minScale: 0.5,
                 maxScale: 3
             }; }

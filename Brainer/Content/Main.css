@@ -1,5 +1,4 @@
 .slides {
-    
 }
 
 .slide {
@@ -182,8 +181,12 @@ input {
     color: #000 !important;
 }
 
+.large-textbox {
+    height: 30px !important;
+}
+
 @media screen and (max-width: 600px) and (min-width: 10px) {
-    #SignInUnit {        
+    #SignInUnit {
         zoom: 3 !important;
         -ms-zoom: 3 !important;
         -webkit-zoom: 3 !important;
